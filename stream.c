@@ -213,6 +213,7 @@ main()
     ssize_t		j;
     STREAM_TYPE		scalar;
     double		t, times[4][NTIMES];
+    double		start_t, end_t;
 
     /* --- SETUP --- determine precision and check timing --- */
 
@@ -302,6 +303,8 @@ main()
     printf(HLINE);
     
     /*	--- MAIN LOOP --- repeat test cases NTIMES times --- */
+    start_t = mysecond();
+    printf("\nstart test time:%lf\n", start_t);
 
     scalar = 3.0;
     for (k=0; k<NTIMES; k++)
@@ -347,6 +350,8 @@ main()
 	times[3][k] = mysecond() - times[3][k];
 	}
 
+    end_t = mysecond();
+    printf("end test time  :%lf, use time:%lf\n\n", end_t, end_t - start_t);
     /*	--- SUMMARY --- */
 
     for (k=1; k<NTIMES; k++) /* note -- skip first iteration */
